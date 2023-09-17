@@ -17,21 +17,21 @@
     opacity: 0.9;
 }
 
-.loginBtn,
-.logoutBtn,
-.addBtn {
-    display: flex;
-    height: 40px;
-    width: 100px;
+.loginBtn, .resetBtn, .logoutBtn,
+.addBtn{
+    height: 30px;
+    width: 81px;
     border: 2px solid rgb(75, 72, 255);
     background: rgb(75, 72, 255);
     color: #fff;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
 }
 
-.loginBtn:hover,
+.divide{
+    display: inline-block;
+}
+
+.loginBtn:hover, .resetBtn:hover
 .logoutBtn:hover,
 .addBtn:hover {
     border: 2px solid rgb(4, 0, 255);
@@ -56,27 +56,9 @@
     box-shadow: 2px 2px #333;
 }
 
-.login {
-    border: 1px solid #333;
-    padding: 25%;
-    margin: -30%;
-}
-
-.button {
-    display: flex;
-    justify-content: space-around;
-}
-
 .input-text {
     border: 1px solid #333;
     height: 30px;
-}
-
-.email-text,
-.password-text {
-    display: grid;
-    justify-items: start;
-    margin: 5%;
 }
 
 .top-list {
@@ -90,6 +72,8 @@
     font-weight: 800;
 }
 
+
+
 /* mainpage */
 
 .mainpage {
@@ -102,13 +86,34 @@
     max-width: 100%;
 }
 
+.top-title {
+    font-size: 300%;
+    color: #001cf0;
+    text-align: center;
+    margin: -1% 0 -1% 0;
+}
+
 .items {
     background: #fff;
     width: 100%;
 }
 
-.logoutBtn,
-.addBtn {
+.add-data {
+    background: #175b4e;
+    width: 100%;
+}
+
+#add_form{
+    margin: 0.5% 0 0 5%;
+}
+
+#add_form .text-input {
+    font-weight: bold;
+    border: none;
+    color: #fff;
+}
+
+.logoutBtn {
     margin: 0.5% 5% 0 5%;
 }
 
@@ -129,9 +134,19 @@
 .box-data .table-head{
     border: 1px solid #333;
     width: 100%;
+    padding: 0 5px 0 5px;
+}
+
+.box-data .table-title{
+    width: 60%;
 }
 
 .table-data{
     border: 1px solid #333;
     padding: 0 5px 0 5px;
+    text-align: center;
+}
+
+#titles{
+    text-align: justify;
 }
