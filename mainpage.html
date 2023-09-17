@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAIN PAGE</title>
+    <script type="module" src="mainpage.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body class="mainpage">
+
+    <h1 class="top-title">BOOK & NOVEL LIST</h1>
+    <div class="add-data">
+        <form action="" id="add_form">
+            <label class="text-input" for="title">Title :</label>
+            <input id="title" type="text" autocomplete="off" value=""
+                placeholder="Input Title..."></input><br>
+
+            <label class="text-input" for="title2">Alternative Title :</label>
+            <input id="title2" type="text" autocomplete="off" value=""
+                placeholder="Input Alternative Title..."></input><br>
+
+            <label class="text-input" for="author">Author :</label>
+            <input id="author" type="text" autocomplete="off" value=""
+                placeholder="Input Author..."></input><br>
+
+            <label class="text-input" for="type">Type :</label>
+            <select name="Light Novel" id="type"></select><br>
+
+            <label class="text-input" for="language">Language :</label>
+            <select name="Chinese" id="language"></select><br>
+
+            <label class="text-input" for="year">Year :</label>
+            <input id="year" type="number" min="1" autocomplete="off" value=""
+                placeholder="Input Year..."></input><br>
+
+            <label class="text-input" for="status">Status :</label>
+            <select name="Completed" id="status"></select><br>
+
+            <label class="text-input" for="read-chapter">Chapter Read :</label>
+            <input id="read-chapter" type="text" value="" autocomplete="off"
+                placeholder="Input Read Chapter..."></input><br>
+
+            <label class="text-input" for="latest-chapter">Latest Chapter :</label>
+            <input id="latest-chapter" type="text" value="" autocomplete="off"
+                placeholder="Input Latest Chapter..."></input><br>
+
+            <input class="addBtn" id="add" type="submit" value="ADD">
+        </form>
+    </div>
+
+    <div class="items">
+        <table class="table-box">
+            <thead id="head-entries">
+                
+            </thead>
+            <tbody id="entries">
+
+            </tbody>
+        </table>
+        <input class="logoutBtn" type="button" value="LOGOUT">
+
+
+    </div>
+</body>
+
+</html>
