@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
 // import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-analytics.js";
-import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+import { getDatabase, ref, onValue, set, remove } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -23,17 +23,24 @@ const db = getDatabase();
 
 insertData();
 
-var data
+window.deleteTable = function deleteTable(o) {
+    var timespan = o.childNodes[1].value;
+    console.log(timespan);
+    remove((ref(db, 'users/' + uid + '/' + timespan )));
+}
+
+var data;
+var uid;
 onAuthStateChanged(auth, (user) => {
     if (user) {
         const usersRef = ref(db, 'users/' + user.uid);
         onValue(usersRef, (snapshot) => {
-            console.log('waiting...')
+            uid = user.uid;
             data = Object.entries(snapshot.val());
             var table_body = document.getElementById('entries');
             table_body.innerHTML = "";
             for (let i = 0; i < data.length; i++) {
-                document.getElementById("entries").innerHTML += `<tr id="data-row">`
+                document.getElementById("entries").innerHTML += `<tr></input>`
                     + '<td class="table-data" id="titles">' + data[i][1]["title"]
                     + '<td class="table-data" id="titles">' + data[i][1]["title2"]
                     + '<td class="table-data" id="titles">' + data[i][1]["author"]
@@ -42,9 +49,10 @@ onAuthStateChanged(auth, (user) => {
                     + '<td class="table-data">' + data[i][1]["year"]
                     + '<td class="table-data">' + data[i][1]["status"]
                     + '<td class="table-data">' + data[i][1]["chapter"]
-                    + '<td class="table-data">' + data[i][1]["chapter2"];
+                    + '<td class="table-data">' + data[i][1]["chapter2"] + '</td>'
+                    + `<td class="table-data delete-button" onclick="deleteTable(this)">` + 'DELETE'
+                    + `<input type="hidden" name="timespan" value=${data[i][0]}>`;
             }
-            console.log('successful!');
 
         })
         let addForm = document.getElementById('add_form');
@@ -66,10 +74,7 @@ onAuthStateChanged(auth, (user) => {
             document.getElementById('title').value = "";
             document.getElementById('title2').value = "";
             document.getElementById('author').value = "";
-            document.getElementById('type').value = "";
-            document.getElementById('language').value = "";
             document.getElementById('year').value = "";
-            document.getElementById('status').value = "";
             document.getElementById('read-chapter').value = "";
             document.getElementById('latest-chapter').value = "";
         });
@@ -92,11 +97,12 @@ logoutBtn.onclick = function () {
 }
 
 function insertData() {
+    // OPTION TYPE
     document.getElementById("type").innerHTML = '<option value="Light Novel">' + 'Light Novel' +
         '<option value="Published Novel">' + 'Published Novel' +
         '<option value="Web Novel">' + 'Web Novel' +
         '<option value="Book">' + 'Book';
-
+    // OPTION LANGUAGE
     document.getElementById("language").innerHTML = '<option value="Chinese">' + 'Chinese' +
         '<option value="Filipino">' + 'Filipino' +
         '<option value="Indonesian">' + 'Indonesian' +
@@ -106,11 +112,11 @@ function insertData() {
         '<option value="Malaysian">' + 'Malaysian' +
         '<option value="Thai">' + 'Thai' +
         '<option value="Vietnamese">' + 'Vietnamese';
-
+    // OPTION STATUS
     document.getElementById("status").innerHTML = '<option value="Completed">' + 'Completed' +
         '<option value="Ongoing">' + 'Ongoing' +
         '<option value="Hiatus">' + 'Hiatus';
-
+    // ADD TABLE HEADER
     document.getElementById("head-entries").innerHTML = '<tr class="box-data">' + '<th class = "table-head table-title">' + "Title" +
         '<th class = "table-head">' + "Alternative title" +
         '<th class = "table-head">' + "Author" +
