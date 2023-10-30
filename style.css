@@ -55,7 +55,7 @@
 .top-text {
     background: #fff;
     border: 2px solid #333;
-    padding: 40%;
+    padding: 20%;
     box-shadow: 2px 2px #333;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .top-list {
-    margin: -20% -20% 40% -20%;
+    margin: -20% -40% 10% -40%;
     display: flex;
     justify-content: center;
 }
@@ -75,8 +75,17 @@
     font-weight: 800;
 }
 
+.text {
+    text-align: justify;
+    font-size: 15px;
+    margin: 0 -10% 0 -10%;
+}
 
+a.text {
+    margin: 0;
+}
 
+/* ==========================================================================================================================================*\
 /* mainpage */
 
 .mainpage {
@@ -85,7 +94,7 @@
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
-    opacity: 0.8;
+    opacity: 0.95;
     max-width: 100%;
 }
 
@@ -96,18 +105,17 @@
     margin: -1% 0 -1% 0;
 }
 
-.items {
-    background: #fff;
-    width: 100%;
+#add_form {
+    background: #175b4e;
 }
 
-.add-data {
-    background: #175b4e;
-    width: 100%;
+#entries {
+    table-layout: fixed;
 }
 
 #add_form {
-    margin: 0.5% 0 0 5%;
+    margin: 0.5% 5% 0 5%;
+    box-shadow: 5px 5px #333;
 }
 
 #add_form .text-input {
@@ -127,31 +135,65 @@
 }
 
 .text-input {
-    border: 1px solid #333;
-    overflow: scroll;
-    resize: none;
-    overflow: hidden;
-    max-width: fit-content;
+    display: inline-block;
+    width: 30%;
+    text-align: justify;
+}
+
+.items {
+    overflow-x: auto;
+    transform: rotateX(180deg);
+    padding-top: 3%;
+}
+
+.items-wrapper {
+    transform: rotateX(180deg);
+    overflow-x: auto;
+
 }
 
 .box-data .table-head {
     border: 1px solid #333;
     width: 100%;
     padding: 0 5px 0 5px;
+    cursor: pointer;
+    background: #fff;
 }
 
-.box-data .table-title {
-    width: 60%;
+.box-data .table-head:hover {
+    background: #e2dfdf;
+}
+
+.div-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
 }
 
 .table-data {
     border: 1px solid #333;
     padding: 0 5px 0 5px;
     text-align: center;
+    background: #fff;
 }
 
-#titles {
+.table-data:hover {
+    background: #e2dfdf;
+}
+
+.table-head,
+.table-data {
+    box-shadow: 5px 5px #333;
+}
+
+#title,
+#title2,
+#author {
     text-align: justify;
+}
+
+.input-box {
+    width: 60%;
 }
 
 .delete-button {
@@ -165,3 +207,81 @@
 .delete-button:hover {
     background: rgb(4, 0, 255);
 }
+
+.divider {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.divider .sec1 {
+    width: 40%;
+}
+
+.divider .sec2 {
+    width: 30%;
+}
+
+.dashboard {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: #6c47d2;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 0;
+    height: 0;
+    transition: all 0.5s ease;
+
+}
+
+.dashboardBtn {
+    position: fixed;
+    border-radius: 10px;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    color: #fff;
+    font-size: 40px;
+    background: #4400ff;
+    cursor: pointer;
+}
+
+.dashboard.active {
+    background: #6c47d2;
+    width: 20%;
+    height: 100%;
+}
+
+.top-box {
+    margin-left: 10%;
+    padding: 5% 0 5% 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.board-box {
+    margin-left: 10%;
+    padding: 5% 0 5% 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+.board-box:hover {
+    background: #6145ae;
+}
+
+.board-text {
+    color: #fff;
+    font-weight: 500;
+
+}
+
+.board-box i, .top-box i{
+    color: #fff;
+    font-size: 20px;
+}
+
